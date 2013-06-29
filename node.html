@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI Global Object</title>
+</head>
+<body>
+    <div id="grandparent">
+        <p id="parent">
+            <span id="start">Start node
+                <span id="child">Child</span>
+            </span>
+            <span id="sibling1">Sibling 1</span>
+            <span id="sibling2">Sibling 2</span>
+        </p>
+    </div>
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('node', function (Y) {
+            var start = Y.one('#start');
+            var parents = start.ancestors(function (node) {
+                if (node.get('id') === 'grandparent') {
+                    return true;
+                }
+            });
+            var child = start.one('#child');
+            //console.log(child);
+
+            var spans = Y.all('span');
+            console.log(spans);
+            spans.each(function (node, i, nodelist) {
+                console.log(this.get('id'));
+            });
+
+            var newp = Y.Node.create('<p>New!</p>');
+            newp.appendTo('body');
+            
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI Slider Widget</title>
+</head>
+<body class="yui3-skin-sam">
+    
+    <div id="slider"></div>
+    <button id="set">Set to 0</button>
+    <button id="get">Get the value</button>
+
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('slider', function (Y) {
+            
+            var slider = new Y.Slider({
+                length: 300,
+                max: 0,
+                min: 300,
+                axis: 'y',
+                value: 150
+            });
+            slider.render('#slider');
+
+            Y.one('#set').on('click', function () {
+                slider.setValue(0);
+            });
+
+            Y.one('#get').on('click', function () {
+                console.log(slider.getValue());
+            });
+        });
+    </script>
+</body>
+</html>

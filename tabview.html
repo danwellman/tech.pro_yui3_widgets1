@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI TabView Widget</title>
+</head>
+<body class="yui3-skin-sam">
+    
+    <div id="tabs">
+        <ul>
+            <li><a href="#panel1">Panel 1</a></li>
+            <li><a href="#panel2">Panel 2</a></li>
+            <li><a href="#panel3">Panel 3</a></li>
+        </ul>
+        <div>
+            <div id="panel1">Lorem ipsum</div>
+            <div id="panel2">Dolor sit amet</div>
+            <div id="panel3">More content, etc, etc</div>
+        </div>
+    </div>
+    <button id="show">Show tab 3</button>
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('tabview', function (Y) {
+            var tabs = new Y.TabView({
+                srcNode: '#tabs'
+            });
+
+            tabs.on('render', function () {
+                console.log(tabs.name + ' was rendered');
+            });
+
+            tabs.on('selectionChange', function (e) {
+                console.log('New tab is: ' + e.newVal.get('index'));
+            });
+
+            tabs.render();
+
+            Y.one('#show').on('click', function () {
+                tabs.selectChild(2);
+            });
+        });
+    </script>
+</body>
+</html>

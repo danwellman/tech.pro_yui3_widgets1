@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI CSS Button</title>
+</head>
+<body class="yui3-skin-sam">
+    
+    <button id="btn">A button</button>
+    <a id="toggle" href="#">A toggle button</a>
+
+    <div id="radiogroup">
+        <label>Choose one:</label>
+        <button class="yui3-button">One</button>
+        <button class="yui3-button">Two</button>
+        <button class="yui3-button">Three</button>
+    </div>
+
+    <div id="checkgroup">
+        <label>Choose one or more:</label>
+        <button class="yui3-button">One</button>
+        <button class="yui3-button">Two</button>
+        <button class="yui3-button">Three</button>
+    </div>
+    
+    <button id="submit" class="yui3-button">Submit</button>
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('button', 'button-group', function (Y) {
+    
+            var btn = new Y.Button({
+                srcNode: '#btn'
+            }),
+            toggle = new Y.ToggleButton({
+                srcNode: '#toggle'
+            });
+
+            btn.render();
+            toggle.render();
+
+            var group = new Y.ButtonGroup({
+                srcNode: '#radiogroup'
+            }),
+            checkGroup = new Y.ButtonGroup({
+                srcNode: '#checkgroup',
+                type: 'checkbox'
+            });
+
+            group.render();
+            checkGroup.render();
+
+            var submit = new Y.Button({
+                srcNode: '#submit'
+            }).render().on('click', function () {
+                console.log(group.getSelectedValues());
+                console.log(checkGroup.getSelectedValues());
+            });
+        });
+    </script>
+</body>
+</html>

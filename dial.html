@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI Dial Widget</title>
+</head>
+<body class="yui3-skin-sam">
+    
+    <div id="dial"></div>
+    <button id="max">Max</button>
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('dial', function (Y) {
+            
+            var dial = new Y.Dial({
+                strings: {
+                    label: 'Volume', resetStr: 'Mute', tooltipHandle: 'Turn it up!'
+                },
+                min: 0,
+                max: 30,
+                stepsPerRevolution: 30,
+                minorStep: 0.5,
+                majorStep: 5,
+                decimalPlaces: 1
+            });
+            dial.render('#dial');
+
+            Y.one('#max').on('click', function () {
+                dial._setToMax();
+            });
+    
+        });
+    </script>
+</body>
+</html>

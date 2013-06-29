@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI Overview Widget</title>
+    <style>
+        .yui3-overlay-content { border:1px solid #aaa; border-radius:3px; background-color:#fff; box-shadow:3px 3px 3px rgba(0,0,0,.4); font-family:sans-serif; }
+        .yui3-widget-hd, .yui3-widget.ft { border-color:#aaa; border-style:solid;border-width:0; padding:.5em 1em; }
+        .yui3-widget-hd { border-bottom-width: 1px; font-weight: bold; }
+        .yui3-widget-ft { border-top-width:1px; font-size:.8em; }
+        .yui3-widget-bd { padding:1em; }
+        .overlay { display: none; }
+        .yui3-overlay .overlay { display:block; }
+        html, body { height: 100%; }
+    </style>
+</head>
+<body class="yui3-skin-sam">
+    
+    <div id="overlay" class="overlay">
+        <header class="yui3-widget-hd">A standard overlay</header>
+        <div class="yui3-widget-bd">This is the content area</div>
+        <footer class="yui3-widget-ft">The footer</footer>
+    </div>
+    <button id="show">Show it!</button>
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('overlay', function (Y) {
+            var overlay = new Y.Overlay({
+                srcNode: '#overlay',
+                visible: false
+                //centered: true
+            });
+
+            overlay.render();
+
+            Y.one('#show').on('click', function () {
+                overlay.show();
+            });
+            
+            Y.one('body').on('click', function (e) {
+                
+                overlay.set('xy', [e.clientX + 10, e.clientY - 5]).show();
+            });
+        });
+    </script>
+</body>
+</html>

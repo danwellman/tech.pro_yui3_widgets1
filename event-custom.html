@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI Event Component</title>
+</head>
+<body>
+    
+    <button id="button1">Update</button>
+    <div id="content"></div>
+
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('event', function (Y) {
+            Y.one('#button1').on('click', function () {
+                var content = '<p>Lorem ipsum dolor...</p>';
+                Y.one('#content').append(content);
+
+                Y.fire('contentUpdated', { content: content });
+            });
+
+            Y.on('contentUpdated', function (e) {
+                console.log('content updated: ', e.content);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI ScrollView Widget</title>
+    <style>
+        #scrollview { width: 200px; }
+    </style>
+</head>
+<body class="yui3-skin-sam">
+    
+    <input id="date" />
+    <div id="cal"></div>
+    
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('calendar', function (Y) {
+            
+            var cal = new Y.Calendar({
+                width: 300,
+                showPrevMonth: true,
+                showNextMonth: true,
+                minimumDate: new Date(),
+                maximumDate: new Date(2013, 11, 31),
+                visible: false
+            });
+            cal.render('#cal');
+
+            Y.one('#date').on('focus', function () {
+                cal.show();
+            });
+
+            cal.on('dateClick', function (e) {
+                var parsedDate = [e.date.getDate(), e.date.getMonth(), e.date.getFullYear()].join('/');
+                Y.one('#date').set('value', parsedDate);
+                cal.hide().deselectDates();
+            });
+            
+        });
+    </script>
+</body>
+</html>

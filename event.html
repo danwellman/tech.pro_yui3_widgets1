@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI Event Component</title>
+</head>
+<body>
+    <button id="button1">Click me!</button>
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('event', function (Y) {
+            Y.one('#button1').on(['mouseenter', 'mouseleave'], function (e) {
+                console.log(e.type);
+            });
+        });
+    </script>
+</body>
+</html>

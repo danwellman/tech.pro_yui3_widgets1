@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI ScrollView Widget</title>
+    <style>
+        #scrollview { width: 200px; }
+    </style>
+</head>
+<body class="yui3-skin-sam">
+    
+    <div id="scrollview">
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <p>Some more content Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <p>Event more content! Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <p>And lots more content also Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+    </div>
+    <button id="plug">Plugin the scrollbar</button>
+    <a id="prev" href="#">Previous</a> <a id="next" href="#">Next</a>
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('scrollview-base', 'scrollview-scrollbars', 'scrollview-paginator', function (Y) {
+            
+            var sv = new Y.ScrollView({
+                srcNode: '#scrollview',
+                height: 250,
+                width: 300
+            });
+
+            sv.plug(Y.Plugin.ScrollViewPaginator, {
+                selector: 'p'
+            });
+
+            sv.render();
+
+            Y.one('#plug').on('click', function () {
+                sv.plug(Y.Plugin.ScrollViewScrollbars);
+                sv.syncUI();
+            });
+
+            Y.one('#prev').on('click', function () {
+                var current = sv.pages.get('index');
+
+                if (current > 0) {
+                    sv.pages.prev();
+                }
+            });
+
+            Y.one('#next').on('click', function () {
+                var current = sv.pages.get('index'),
+                    total = sv.pages.get('total');
+
+                if (current < total) {
+                    sv.pages.next();
+                }
+            });
+    
+        });
+    </script>
+</body>
+</html>

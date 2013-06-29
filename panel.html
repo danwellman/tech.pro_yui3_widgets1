@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI Overview Widget</title>
+</head>
+<body class="yui3-skin-sam">
+    
+    <div id="panel" class="overlay">
+        <header class="yui3-widget-hd">A standard overlay</header>
+        <div class="yui3-widget-bd">This is the content area</div>
+        <footer class="yui3-widget-ft">The footer</footer>
+    </div>
+    
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('panel', function (Y) {
+            var panel = new Y.Panel({
+                srcNode: '#panel',
+                modal: true,
+                buttons: [
+                    {
+                        value: 'Close',
+                        action: function (e) {
+                            panel.hide();
+                        },
+                        section: Y.WidgetStdMod.HEADER
+                    }
+                ]
+            });
+
+            panel.render();
+
+        });
+    </script>
+</body>
+</html>

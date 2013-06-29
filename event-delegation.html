@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>YUI Event Component</title>
+</head>
+<body>
+    <div id="buttons">
+        <button id="button1">Click me!</button>
+        <button id="button2">Click me!</button>
+        <button id="button3">Click me!</button>
+        <button id="button4">Click me!</button>
+        <button id="button5">Click me!</button>
+        <button id="button6">Click me!</button>
+    </div>
+    
+    <script src="build/yui/yui-min.js"></script>
+    <script>
+        YUI().use('event', function (Y) {
+            var delegatedSub = Y.delegate('click', function (e) {
+                e.preventDefault();
+                console.log(this.get('id'));
+                delegatedSub.detach();
+            }, '#buttons', 'button');
+        });
+    </script>
+</body>
+</html>
