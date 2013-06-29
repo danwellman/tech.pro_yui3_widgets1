@@ -22,5 +22,8 @@ The course consists of the following lessons:
 14. The Calendar widget
 15. Summary
 
+## Using these files ##
+Unpack the build.zip archive to a local directory on your machine. Add the example files from the course to the same direcory that build is located in.
+
 ## Authors ##
 Dan Wellman <danwellman@hotmail.com>
