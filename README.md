@@ -1,6 +1,6 @@
 # YUI3 The Complete Guide - widgets part 1 #
 
-This repository contains all of the example code for the [Tech.pro](http://tech.pro) course **YUI3 The Complete Guide - widgets part 1**
+This repository contains all of the example code for the [Tech.pro](http://tech.pro) course [**YUI3 The Complete Guide - widgets part 1**](http://tech.pro/tutorial/1437/yui3-the-complete-guide-widgets-1-lesson-1)
 
 ## Course contents ##
 
